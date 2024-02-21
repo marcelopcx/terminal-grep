@@ -15,6 +15,30 @@ int main(int argc, char** args) {
         return 1;
     }
     
+    string colorInicial[4]= {"\x1B[31m", "\x1B[32m", "\033[1;33m", "\x1B[34m"};
+    string colorFinal[4]= {"\x1B[0m", "\x1B[0m", "\x1B[0m", "\x1B[0m"};
+    int selecColor = 2;
+
+    string colorArg = args[3];
+    transform(colorArg.begin(), colorArg.end(), colorArg.begin(), ::tolower);
+
+    if (colorArg == "rojo" || colorArg == "red")
+    {
+        selecColor = 0;
+    }else if (colorArg == "verde" || colorArg == "green")
+    {
+        selecColor = 1;
+    }else if (colorArg == "amarrillo" || colorArg == "yellow")
+    {
+        selecColor = 2;
+    }else if (colorArg == "azul" || colorArg == "blue")
+    {
+        selecColor = 3;
+    }else
+    {
+        cout<<"Color no válido, se usará el amarrillo por defecto"<<endl;
+    }
+    
     string line;
     int numDeCaracteres = 0;
     string texto[100];
@@ -56,7 +80,7 @@ int main(int argc, char** args) {
         while (pos != string::npos)
         {
             cout<<textoFinal[i].substr(inicio, pos - inicio);
-            cout<<"\033[1;33m"<<textoFinal[i].substr(pos, palabra.length())<<"\033[0m";
+            cout<<colorInicial[selecColor]<<textoFinal[i].substr(pos, palabra.length())<<colorFinal[selecColor];
 
             inicio = pos + palabra.length();
             pos = linea.find(palabra, inicio);
@@ -72,4 +96,5 @@ int main(int argc, char** args) {
     cout<<endl;
 
     cout<<numDeCoincidencias<<" coincidencias en "<<numDeCoincidenciasLineas<<" lineas"<<endl;
+    cout<<endl;
 }
