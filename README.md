@@ -4,7 +4,7 @@ Este pequeño proyecto de clase que consiste en crear un clon del comando de la 
 
 ## Requisitos
 
-- Un compilador de C++ (como g++)
+- Un compilador de C++
 - Un archivo de texto con el contenido a buscar
 
 ## Uso
