@@ -29,6 +29,7 @@ int main(int argc, char** args) {
     transform(palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
 
     string textoFinal[100];
+    int numDeCoincidenciasLineas = 0;
     cout<<endl;
 
     for (int i = 0; i < numDeCaracteres; i++)
@@ -40,9 +41,11 @@ int main(int argc, char** args) {
         if (pos != string::npos)
         {
             textoFinal[i] = texto[i];
+            numDeCoincidenciasLineas++;
         }
     }
 
+    int numDeCoincidencias = 0;
     for (int i = 0; i < numDeCaracteres; i++)
     {
         string linea = textoFinal[i];
@@ -57,6 +60,7 @@ int main(int argc, char** args) {
 
             inicio = pos + palabra.length();
             pos = linea.find(palabra, inicio);
+            numDeCoincidencias++;
         }
 
         if (!textoFinal[i].empty())
@@ -66,4 +70,6 @@ int main(int argc, char** args) {
         }
     }
     cout<<endl;
+
+    cout<<numDeCoincidencias<<" coincidencias en "<<numDeCoincidenciasLineas<<" lineas"<<endl;
 }
