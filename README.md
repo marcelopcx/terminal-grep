@@ -1,0 +1,2 @@
+# Termial-Grep
+Este pequeño proyecto de clase que consiste en crear un clon del comando de la terminal de Linux grep. Este clon está diseñado específicamente para buscar patrones o cadenas de texto dentro de un archivos txt.
